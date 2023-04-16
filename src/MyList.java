@@ -3,15 +3,15 @@ interface MyList<T>{
 
     int getSize();
 
-    boolean contains(T o);
+    boolean contains(T object);
     void add(T newItem);
     void add(T newItem,int index);
     boolean remove(T item);
     T remove(int index);
     void clear();
     T get(int index);
-    int indexOf(T o);
-    int lastIdexOf(T o);
+    int indexOf(T object);
+    int lastIdexOf(T object);
     void sort();
 
 }

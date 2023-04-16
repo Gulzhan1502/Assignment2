@@ -52,17 +52,17 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public int indexOf(T o) {
+    public int indexOf(T object) {
         for (int i = 0; i < size; i++) {
-            if (arr[i] == o) return i;
+            if (arr[i] == object) return i;
         }
         return -1;
     }
 
     @Override
-    public int lastIdexOf(Object o) {
+    public int lastIdexOf(Object object) {
         for (int i = size - 1; i >= 0; i--) {
-            if (arr[i] == o) return i;
+            if (arr[i] == object) return i;
         }
         return -1;
     }
@@ -104,9 +104,9 @@ public class MyArrayList<T> implements MyList<T> {
         return size;
     }
     @Override
-    public boolean contains(T o) {
+    public boolean contains(T object) {
         for (int i = 0; i < size; i++) {
-            if (arr[i].equals(o)) return true;
+            if (arr[i].equals(object)) return true;
         }
         return false;
     }
