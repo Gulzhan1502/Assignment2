@@ -1,20 +1,53 @@
 import java.util.*;
-public class MyArrayList<E> implements List<E> {
-    private Object [] elements;
+public class MyArrayList<T> implements MyList<T> {
+    private Object[] arr;
     private int size;
-    public MyArrayList(){
-        elements=new Object[10];
-        size=0;
-    }
-    public boolean add(E element){
-        if (size==elements.length){
-            int newSize=elements.length *2;
-            elements=Arrays.copyOf(elements,newSize);
-        }
+    private int capacity;
 
-        elements[size]=element;
-        size++;
-        return true;
+
+    public MyArrayList() {
+        arr = new Object[capacity];
+        size = 0;
+        capacity = 10;
+
     }
+    @Override
+    public void add(T newItem) {
+        if (size == capacity) {
+            increaseArr();
+        }
+        arr[size++] = newItem;
+    }
+
+
+    private void increaseArr() {
+        capacity = (int) (2 * capacity);
+        Object[] newArr = new Object[capacity];
+        for (int i = 0; i < size; i++) {
+            newArr[i] = arr[i];
+        }
+        newArr = arr;
+
+    }
+
+
+    public T get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        return (T) arr[index];
+    }
+
+    public void remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        for (int i = index; i < size - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        size--;
+    }
+
+
 
 }
